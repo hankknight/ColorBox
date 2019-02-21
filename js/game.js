@@ -82,7 +82,7 @@ function init(){
 	$(".block").eq(parseInt(Math.random()*n*n)).css("background-color","rgb("+rgb1+","+rgb2+","+(rgb3+50)+")");
 }
 
-//图片动画
+//轮播图片动画
 function imgAnimate(){
 	var imgLen = $("#banner img").length;
 	setInterval(function(){
@@ -115,4 +115,32 @@ function gameStart(){
 			$("#yourScore").html(num);
 		}
 	},1000);
+}
+
+//选择不同色方块
+function chooseDiff(index){
+	var mathNum = $(index).index();
+	if(mathNum == n*n-1){
+		var pre = $(index).index()-1;
+		if($(index).css("background-color") != $(".block").eq(pre).css("background-color")){
+			init();
+			num++;
+			$("#num").html(num);
+		}
+	}else if(mathNum == 0){
+		var next = $(index).index()+1;
+		if($(index).css("background-color") != $(".block").eq(next).css("background-color") && $(index).css("background-color") != $(".block").eq(2).css("background-color")){
+			init();
+			num++;
+			$("#num").html(num);
+		}
+	}else{
+		var pre = $(index).index()-1;
+		var next = $(index).index()+1;
+		if($(index).css("background-color") != $(".block").eq(next).css("background-color") && $(index).css("background-color") != $(".block").eq(pre).css("background-color")){
+			init();
+			num++;
+			$("#num").html(num);
+		}
+	}
 }
