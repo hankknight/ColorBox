@@ -30,16 +30,16 @@ function playMusic(i){
 	var index = $(i).index();
 	switch(index){
 		case 0:
-			$("#start .music-head").eq(0).attr("src","images/1.png");
+			$("#start .music-head").eq(0).attr("src","images/music_1.png");
 			break;
 		case 1:
-			$("#start .music-head").eq(0).attr("src","images/2.png");
+			$("#start .music-head").eq(0).attr("src","images/music_2.png");
 			break;
 		case 2:
-			$("#start .music-head").eq(0).attr("src","images/3.png");
+			$("#start .music-head").eq(0).attr("src","images/music_3.png");
 			break;
 		case 3:
-			$("#start .music-head").eq(0).attr("src","images/4.png");
+			$("#start .music-head").eq(0).attr("src","images/music_4.png");
 			break;
 		default:
 			$("#start .music-head").eq(0).attr("src","images/music-head.png");
