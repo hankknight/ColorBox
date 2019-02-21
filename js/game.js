@@ -1,6 +1,7 @@
 var n = 1; //每行显示多少个方块
 var num = 1; //游戏关数
 var imgIndex = 1; //游戏中轮播图切换
+var remain_time = parseInt($("#remain-time").html()); //剩余时间
 
 $(document).ready(function(){
 	var $elie = $("#chooseMusic");
@@ -48,3 +49,70 @@ function playMusic(i){
 	$("#start .startPlayBtn").animate({opacity:"1"},1000);
 }
 
+//初始化
+function init(){
+	$("#game-body").empty();
+	if(n >= 7){
+		n = 7;
+	}else{
+		n++;
+	}
+	var rgb1 = parseInt(Math.random()*255);
+	var rgb2 = parseInt(Math.random()*255);
+	var rgb3 = parseInt(Math.random()*255);
+	var blockWidth = ($("#game-body").width()-(n+1)*8)/n;
+	var blockHeight = ($("#game-body").height()-(n+1)*8)/n;
+	for(i=0;i<n*n;i++){
+		$("#game-body").append("<div class='block' onclick='chooseDiff(this)'></div>");
+	}
+	$(".block").width(blockWidth);
+	$(".block").height(blockHeight);
+	for(i=0;i<n*n;i++){
+		var y = (i+1)%n;
+		var s = parseInt((i+1)/n);
+		$(".block").eq(i).css("background-color","rgb("+rgb1+","+rgb2+","+rgb3+")");
+		if(y == 0){
+			$(".block").eq(i).css("left",(n-1)*(blockWidth+8)+"px");
+			$(".block").eq(i).css("top",(s-1)*(blockHeight+8)+"px");
+		}else{
+			$(".block").eq(i).css("left",(y-1)*(blockWidth+8)+"px");
+			$(".block").eq(i).css("top",s*(blockHeight+8)+"px");
+		}
+	}
+	$(".block").eq(parseInt(Math.random()*n*n)).css("background-color","rgb("+rgb1+","+rgb2+","+(rgb3+50)+")");
+}
+
+//图片动画
+function imgAnimate(){
+	var imgLen = $("#banner img").length;
+	setInterval(function(){
+		$("#banner img").eq(imgIndex).fadeIn(3000).siblings().fadeOut(3000);
+		imgIndex++;
+		if(imgIndex > imgLen){
+			imgIndex = 0;
+		}
+	},6000);
+}
+
+//游戏开始
+function gameStart(){
+	$("#start").fadeOut(1000);
+	$("#container").fadeIn(1000);
+	$("#container").height($(window).height());
+	init();
+	$("#num").html(1);
+	imgAnimate();
+
+	var end = setInterval(function(){
+		remain_time = parseInt($("#remain-time").html());
+		remain_time--;
+		$("#remain-time").html(remain_time);
+		if(remain_time == 0){
+			clearInterval(end);
+			alert("时间到");
+			$("#end-oper").fadeIn(400);
+			$("#score").animate({top:($(window).height()-200)/2+"px",left:($(window).width()-280)/2+"px"},1000);
+			$("#yourScore").html(num);
+		}
+	},1000);
+}

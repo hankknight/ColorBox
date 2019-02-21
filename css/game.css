@@ -8,3 +8,98 @@
 body{
 	background-image: url(../images/con-bg.jpg);
 }
+#start{
+	position: absolute;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+}
+#start .music-head{
+	position: absolute;
+	top: 8%;
+	left: -100%;
+	display: block;
+}
+#start .startPlayBtn{
+	margin: 10% auto 0;
+	display: block;
+	opacity: 0;
+}
+#prevGameStart{
+	width:100%;
+	height:60px;
+	position:absolute;
+	z-index: 100;
+}
+#chooseMusic{
+	width: 250px;
+	height: 250px;
+	margin: 0 auto;
+	display: none;
+	background-image: url(../images/music.png);
+}
+#chooseMusic div{
+	width: 125px;
+	height: 125px;
+	float: left;
+}
+#container{
+	margin: 0 auto;
+	background-size: 100% 100%;
+	display: none;
+}
+#game-head{
+	padding: 8px;
+	text-align: center;
+	height: 30%;
+	font-size: 18px;
+	font-family: '黑体';
+}
+#game-body{
+	height: 70%;
+	position: relative;
+}
+#banner{
+	height:80%;
+	position: relative;
+}
+#banner img{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left:0;
+	top:0;
+}
+#banner img:not(:first-child){
+	display: none;
+}
+#end-oper{
+	position: absolute;
+	top: 0;
+	background-image: url(../images/con-bg.jpg);
+	background-size: 100% 100%;
+	display: none;
+	z-index: 3;
+	width: 100%;
+	height: 100%;
+}
+#score{
+	width: 280px;
+	height: 200px;
+	padding-top: 40px;
+	text-align: center;
+	position: absolute;
+	top: -100%;
+	background-image: url(../images/end-bg.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+#score p{
+	margin-bottom: 10px;
+}
+#yourScore{
+	font-size: 30px;
+	font-weight: bold;
+	font-family: '黑体';
+	color: #a80000;
+}
