@@ -144,3 +144,9 @@ function chooseDiff(index){
 		}
 	}
 }
+
+//再玩一次
+function playAgain(){
+	// window.location.href="";
+	window.location.reload();
+}
